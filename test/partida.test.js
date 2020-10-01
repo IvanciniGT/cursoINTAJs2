@@ -1,9 +1,22 @@
 var assert = require('assert');
 var Partida = require('../bin/partida.js');
 var ahorcado = require('../bin/ahorcado.js');
+var JuegoPaises = require('../bin/juegoPaises.js');
+const Juego = require('../bin/juego.js');
 
-describe('Crear partida',()=>{
-    const miPartida=new Partida();
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+describe('Crear partida',async()=>{
+    
+    miJuego=new JuegoPaises();
+    while(miJuego.estado!=Juego.ESTADO.INICIADO){
+        await sleep(200);
+        
+        //console.log('Cargando juego');
+    }
+    const miPartida=new Partida(miJuego);
     it('Una partida deberia iniciarse sin fallos', 
         ()=> assert.equal(miPartida.fallos , 0));
     it('Una partida deberia iniciarse con una palabra', 
@@ -21,8 +34,13 @@ describe('Crear partida',()=>{
 });
 
 describe('Función de nuevaLetra',()=>{
-    describe('Nueva letra ok',()=>{
-        const miPartida=new Partida();
+    describe('Nueva letra ok',async()=>{
+        miJuego=new JuegoPaises();
+        while(miJuego.estado!=Juego.ESTADO.INICIADO){
+            await sleep(200);
+            //console.log('Cargando juego');
+        }
+        const miPartida=new Partida(miJuego);
         var letra=miPartida.palabra.charAt(0);
         miPartida.nuevaLetra(letra);
         it('No incrementa fallos', 
@@ -32,8 +50,13 @@ describe('Función de nuevaLetra',()=>{
         it('En la lista de letras aparece la nueva letra', 
             ()=>assert.ok(miPartida.letras.includes(letra)));
     });
-    describe('Nueva letra Nok',()=>{
-        const miPartida=new Partida();
+    describe('Nueva letra Nok',async()=>{
+        miJuego=new JuegoPaises();
+        while(miJuego.estado!=Juego.ESTADO.INICIADO){
+            await sleep(200);
+            //console.log('Cargando juego');
+        }
+        const miPartida=new Partida(miJuego);
         var letra='€';
         miPartida.nuevaLetra(letra);
         it('Incrementa fallos', 

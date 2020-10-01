@@ -1,5 +1,3 @@
-
-
 function enmascarar(palabra, letrasSinEnmascarar=[] ){
     return [...palabra]     // Para cada letra
         .map(letra=>{       // Transformarla en
@@ -12,12 +10,4 @@ function enmascarar(palabra, letrasSinEnmascarar=[] ){
 //    return [...palabra].map(letra => letrasSinEnmascarar.includes(letra) ? letra : '_').join(' ');
 }
 
-function listaPalabras(){
-    return['rojo','verde','azul','morado'];
-}
-
-function palabraAleatoria(lista){
-    return lista[ parseInt(Math.random()*lista.length) ];
-}
-
-module.exports = {enmascarar,palabraAleatoria, listaPalabras};
+module.exports = {enmascarar};

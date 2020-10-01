@@ -5,8 +5,8 @@ const ESTADO={
     'GANADO': 2   
 }
 class Partida{
-    constructor(){
-        this.palabra=ahorcado.palabraAleatoria(ahorcado.listaPalabras());
+    constructor(juego){
+        this.palabra=juego.palabraAleatoria();
         this.mascara=ahorcado.enmascarar(this.palabra);
         this.letras=[];
         this.fallos=0;
