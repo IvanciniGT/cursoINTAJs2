@@ -6,5 +6,5 @@ describe('Función de enmascarar',()=>{
     it('Deberia enmascarar Hola como "_ _ _ _" ', 
         () => assert.equal( '_ _ _ _' , ahorcado.enmascarar('Hola') ) );
     it('Deberia enmascarar Hola como "_ o _ a", si tengo las letras: a,o,m ', 
-        () => assert.equal( '_ o _ a' , ahorcado.enmascarar('Hola',['a','o','m']) ) );
+        () => assert.equal( '_ o _ a' , ahorcado.enmascarar('Hola',['A','O','M']) ) );
 });

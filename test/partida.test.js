@@ -16,20 +16,20 @@ async function tests(){
     }
 
     describe('Crear partida',()=>{
-        const miPartida=new Partida(miJuego);
+        const miPartidaGanada=new Partida(miJuego);
 
         it('Una partida deberia iniciarse sin fallos', 
-            ()=> assert.equal(miPartida.fallos , 0));
+            ()=> assert.equal(miPartidaGanada.fallos , 0));
         it('Una partida deberia iniciarse con una palabra', 
-            ()=> assert.ok(miPartida.palabra.length > 0));
+            ()=> assert.ok(miPartidaGanada.palabra.length > 0));
         it('Una partida deberia iniciarse con una lista vacia de letras', 
-            ()=> assert.equal(miPartida.letras.length , 0));
+            ()=> assert.equal(miPartidaGanada.letras.length , 0));
         it('Una partida deberia iniciarse en estado JUGANDO', 
-            ()=> assert.equal(miPartida.estado,Partida.ESTADO.JUGANDO ));
+            ()=> assert.equal(miPartidaGanada.estado,Partida.ESTADO.JUGANDO ));
         it('Una partida deberia iniciarse con la palabra totalmente enmascarada', 
             ()=> {
-                var palabra=miPartida.palabra;
-                var mascara=miPartida.mascara;
+                var palabra=miPartidaGanada.palabra;
+                var mascara=miPartidaGanada.mascara;
                 assert.equal(ahorcado.enmascarar(palabra),mascara);
             });
     });
